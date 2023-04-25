@@ -252,7 +252,9 @@ module.exports = function () {
             // compression method
             data.writeUInt16LE(_method, Constants.LOCHOW);
             // modification time (2 bytes time, 2 bytes date)
-            data.writeUInt32LE(_time, Constants.LOCTIM);
+            //data.writeUInt32LE(_time, Constants.LOCTIM);
+            // TODO RangeError [ERR_OUT_OF_RANGE]
+            data.writeUInt32LE(0, Constants.LOCTIM);
             // uncompressed file crc-32 value
             data.writeUInt32LE(_crc, Constants.LOCCRC);
             // compressed size
@@ -280,7 +282,9 @@ module.exports = function () {
             // compression method
             data.writeUInt16LE(_method, Constants.CENHOW);
             // modification time (2 bytes time, 2 bytes date)
-            data.writeUInt32LE(_time, Constants.CENTIM);
+            // TODO RangeError [ERR_OUT_OF_RANGE]
+            //data.writeUInt32LE(_time, Constants.CENTIM);
+            data.writeUInt32LE(0, Constants.CENTIM);
             // uncompressed file crc-32 value
             data.writeUInt32LE(_crc, Constants.CENCRC);
             // compressed size
